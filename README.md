@@ -134,4 +134,4 @@ logger.error(color("соединение потеряно", "#ff4444"))
 ---
 
 ## **📜 лицензия**
-[MIT](LICENSE)
+[MIT](https://github.com/drawiks/dcolor/blob/main/LICENSE)

@@ -134,4 +134,4 @@ logger.error(color("connection failed", "#ff4444"))
 ---
 
 ## **📜 license**
-[MIT](LICENSE)
+[MIT](https://github.com/drawiks/dcolor/blob/main/LICENSE)
