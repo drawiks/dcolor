@@ -43,8 +43,11 @@ print(color("hello!", "#ff0000", "bold", "underline"))
 
 - 🎨 **hex colors** — `"#ff0000"` or `"#f00"`
 - 🌈 **rgb colors** — `(255, 0, 0)`
+- 🔢 **256-color palette** — `196` (0-255)
 - 🏷️ **named colors** — `"red"`, `"cyan"`, `"orange"`...
+- 🎭 **background colors** — `bg="#ff0000"`
 - ✨ **styles** — `bold`, `italic`, `underline`, `strike`, `dim`, `blink`
+- 📱 **auto terminal detection** — no colors in piped output
 - 🚫 **no dependencies** — stdlib only
 
 ---
@@ -72,6 +75,15 @@ print(color("text", "#f00"))  # same as #ff0000
 print(color("text", (255, 165, 0)))
 ```
 
+### 256-color palette
+
+```python
+print(color("text", 196))              # orange
+print(color("text", fg=196, bg=21))    # orange on blue
+```
+
+colors 0-255 supported (see [256 terminal colors](https://github.com/termcolors/256-colors))
+
 ### named colors
 
 ```python
@@ -92,6 +104,13 @@ print(color("text", "cyan", "italic", "strike"))
 
 available styles: `bold`, `dim`, `italic`, `underline`, `blink`, `strike`
 
+### background color
+
+```python
+print(color("text", fg="#ffffff", bg="#ff0000"))  # white on red
+print(color("text", bg="#00ff00"))                 # background only
+```
+
 ### style only (no color)
 
 ```python
@@ -106,6 +125,22 @@ from dcolor import strip
 
 raw = color("hello", "#ff0000", "bold")
 clean = strip(raw)  # "hello"
+```
+
+### auto terminal detection
+
+by default dcolor doesn't color output if it's piped or redirected:
+
+```bash
+python script.py > log.txt          # no colors
+python script.py | cat              # no colors
+python script.py                    # colors (in terminal)
+```
+
+force colors on:
+
+```python
+print(color("text", "#ff0000", force=True))  # always colored
 ```
 
 ---

@@ -43,8 +43,11 @@ print(color("привет!", "#ff0000", "bold", "underline"))
 
 - 🎨 **hex цвета** — `"#ff0000"` или `"#f00"`
 - 🌈 **rgb цвета** — `(255, 0, 0)`
+- 🔢 **256-цветовая палитра** — `196` (0-255)
 - 🏷️ **именованные цвета** — `"red"`, `"cyan"`, `"orange"`...
+- 🎭 **background цвета** — `bg="#ff0000"`
 - ✨ **стили** — `bold`, `italic`, `underline`, `strike`, `dim`, `blink`
+- 📱 **автоопределение терминала** — не красит в piped вывод
 - 🚫 **без зависимостей** — только stdlib
 
 ---
@@ -72,6 +75,15 @@ print(color("текст", "#f00"))  # то же что и #ff0000
 print(color("текст", (255, 165, 0)))
 ```
 
+### 256-цветовая палитра
+
+```python
+print(color("текст", 196))              # оранжевый
+print(color("текст", fg=196, bg=21))    # оранжевый текст на синем фоне
+```
+
+поддерживаются цвета 0-255 (см. [256 цветов терминала](https://github.com/termcolors/256-colors))
+
 ### именованные цвета
 
 ```python
@@ -92,6 +104,13 @@ print(color("текст", "cyan", "italic", "strike"))
 
 доступные стили: `bold`, `dim`, `italic`, `underline`, `blink`, `strike`
 
+### background цвет
+
+```python
+print(color("текст", fg="#ffffff", bg="#ff0000"))  # белый на красном
+print(color("текст", bg="#00ff00"))                 # только фон
+```
+
 ### только стиль (без цвета)
 
 ```python
@@ -106,6 +125,22 @@ from dcolor import strip
 
 raw = color("привет", "#ff0000", "bold")
 clean = strip(raw)  # "привет"
+```
+
+### автоопределение терминала
+
+по умолчанию dcolor не красит текст, если вывод идёт в файл или пайп:
+
+```bash
+python script.py > log.txt          # без цветов
+python script.py | cat              # без цветов
+python script.py                    # с цветами (в терминале)
+```
+
+принудительно включить цвета:
+
+```python
+print(color("текст", "#ff0000", force=True))  # всегда с цветами
 ```
 
 ---
