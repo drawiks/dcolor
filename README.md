@@ -1,6 +1,6 @@
 <div align="center">
     <h1>🎨 dcolor</h1>
-    <img height="20" alt="Python 3.7+" src="https://img.shields.io/badge/python-3.7+-blue">
+    <img height="20" alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8+-blue">
     <img height="20" alt="License MIT" src="https://img.shields.io/badge/license-MIT-green">
     <img height="20" alt="Status" src="https://img.shields.io/badge/status-stable-brightgreen">
     <p><strong>dcolor</strong> — цветной вывод в терминал с поддержкой hex/rgb</p>
@@ -48,6 +48,7 @@ print(color("привет!", "#ff0000", "bold", "underline"))
 - 🎭 **background цвета** — `bg="#ff0000"`
 - ✨ **стили** — `bold`, `italic`, `underline`, `strike`, `dim`, `blink`
 - 📱 **автоопределение терминала** — не красит в piped вывод
+- 🪟 **Windows** — нативная поддержка Windows 10+ (без зависимостей)
 - 🚫 **без зависимостей** — только stdlib
 
 ---
@@ -142,6 +143,8 @@ python script.py                    # с цветами (в терминале)
 ```python
 print(color("текст", "#ff0000", force=True))  # всегда с цветами
 ```
+
+на Windows 10+ (Build 10586+) работает нативно. на старых версиях Windows escape-коды отображаются как мусор.
 
 ---
 

@@ -1,6 +1,6 @@
 <div align="center">
     <h1>🎨 dcolor</h1>
-    <img height="20" alt="Python 3.7+" src="https://img.shields.io/badge/python-3.7+-blue">
+    <img height="20" alt="Python 3.8+" src="https://img.shields.io/badge/python-3.8+-blue">
     <img height="20" alt="License MIT" src="https://img.shields.io/badge/license-MIT-green">
     <img height="20" alt="Status" src="https://img.shields.io/badge/status-stable-brightgreen">
     <p><strong>dcolor</strong> — colored terminal output with hex/rgb support</p>
@@ -48,6 +48,7 @@ print(color("hello!", "#ff0000", "bold", "underline"))
 - 🎭 **background colors** — `bg="#ff0000"`
 - ✨ **styles** — `bold`, `italic`, `underline`, `strike`, `dim`, `blink`
 - 📱 **auto terminal detection** — no colors in piped output
+- 🪟 **Windows** — native Windows 10+ support (no dependencies)
 - 🚫 **no dependencies** — stdlib only
 
 ---
@@ -142,6 +143,8 @@ force colors on:
 ```python
 print(color("text", "#ff0000", force=True))  # always colored
 ```
+
+on Windows 10+ (Build 10586+) works natively. on older Windows versions, escape codes render as garbage.
 
 ---
 

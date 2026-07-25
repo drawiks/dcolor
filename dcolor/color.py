@@ -1,4 +1,6 @@
 
+import ctypes
+import os
 import re
 import sys
 from typing import Union, Tuple, Optional
@@ -35,6 +37,22 @@ STYLES = {
 
 RESET = "\033[0m"
 RE_ANSI = re.compile(r"\033\[[0-9;]*m")
+
+def _enable_windows_ansi():
+    if os.name != "nt":
+        return
+    try:
+        kernel32 = ctypes.windll.kernel32
+        handle = kernel32.GetStdHandle(-11)
+        mode = ctypes.c_ulong()
+        if not kernel32.GetConsoleMode(handle, ctypes.byref(mode)):
+            return
+        if not kernel32.SetConsoleMode(handle, mode.value | 0x0004):
+            return
+    except Exception:
+        pass
+
+_enable_windows_ansi()
 
 def _hex_to_rgb(hex_color: str) -> Tuple[int, int, int]:
     hex_color = hex_color.lstrip("#")
